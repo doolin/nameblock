@@ -12,7 +12,7 @@ LDFLAGS=$(CPPUNIT_LIBS) -lsqlite3
 commit := $(shell git reflog -1)
 branch := $(shell git show-branch --reflog=1)
 
-bin_PROGRAMS = objects
+bin_PROGRAMS = objects records
 
 ALL = objects
 ofiles = objects.o
@@ -25,6 +25,7 @@ $(ofiles): %.o: %.cpp
 	g++ $(CXXFLAGS) -c -D$*_STANDALONE $(CPPUNIT_INCLUDES) $<
 
 objects_SOURCES = objects.cpp
+records_SOURCES = records.cpp
 
 clean:
 	rm -rf *~ a.out $(ALL) $(ofiles) *.sqlite3
