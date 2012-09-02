@@ -12,9 +12,8 @@ LDFLAGS=$(CPPUNIT_LIBS) -lsqlite3
 commit := $(shell git reflog -1)
 branch := $(shell git show-branch --reflog=1)
 
-ALL = colortest sqlite disambiguation similarity objects mapkeys interface
-ofiles = objects.o sqlite.o disambiguation.o similarity.o colortest.o mapkeys.o \
-				 interface.o
+ALL = objects
+ofiles = objects.o
 
 #all: $(ofiles)
 all: $(ALL)
