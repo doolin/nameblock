@@ -4,6 +4,8 @@ export GLIBCXX_FORCE_NEW=1
 CC = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra -Wno-unused-parameter
 
+INCLUDES = -I../include
+
 CPPUNIT_LIBS = $(shell cppunit-config --libs)
 CPPUNIT_INCLUDES = $(shell cppunit-config --cflags)
 

@@ -1,15 +1,13 @@
 
 #include <iostream>
 #include <fstream>
-#include <string>
-#include <vector>
 
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
 
-using std::string;
-using std::vector;
+#include "record.h"
+
 using std::ifstream;
 
 
@@ -57,17 +55,6 @@ parse_column_names(string line) {
 }
 
 
-
-class Record {
-  private:
-    string line;
-  public:
-    Record(string l) : line(l) {}
-
-    void print() {
-      std::cout << line << std::endl;
-    }
-};
 
 
 void
