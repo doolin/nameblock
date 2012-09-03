@@ -7,7 +7,7 @@ AM_CXXFLAGS = -O0 -g -Wall -Wextra -ansi  -Wformat-zero-length
 AM_LDFLAGS = $(shell cppunit-config --libs)
 
 
-TESTS = objects
+TESTS = objects records
 
 bin_PROGRAMS = $(TESTS)
 
@@ -18,6 +18,7 @@ bin_PROGRAMS = $(TESTS)
 
 objects_SOURCES = test_objects.cpp
 #objects_LDADD = $(LDADD)
+records_SOURCES = test_record.cpp
 
 relink:
 	rm -rf $(TESTS)
