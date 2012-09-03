@@ -13,7 +13,9 @@ class Record {
     string line;
     vector<string> attributes;
   public:
-    Record(string l) : line(l) {}
+    Record(string l) : line(l) {
+      parse_line();
+    }
 
     void parse_line();
 

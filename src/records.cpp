@@ -138,7 +138,7 @@ main(int argc, char **) {
   vector<Record> records;
   make_records_vector(records);
   //records[14324].print();
-  parse_records(records);
+  //parse_records(records);
 
   records[444].print_attributes();
 
