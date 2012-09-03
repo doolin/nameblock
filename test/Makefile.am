@@ -1,7 +1,7 @@
 
 INCLUDES = -I../include -I/opt/local/include
 
-AM_CXXFLAGS = -O0 -g -Wall -Wextra -ansi  -Wformat-zero-length
+AM_CXXFLAGS = -O0 -g -Wall -Wextra -ansi -std=c++11 -Wformat-zero-length
 
 #LDADD = ../src/libblocking.a
 AM_LDFLAGS = $(shell cppunit-config --libs)

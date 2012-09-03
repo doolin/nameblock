@@ -55,18 +55,62 @@ parse_column_names(string line) {
 }
 
 
+void
+Record::print_attributes() {
 
+  std::cout << "printing attributes..." << std::endl;
+  vector<string>::const_iterator at = attributes.begin();
+  for (; at != attributes.end(); ++at) {
+  //for (auto att : attributes) {
+    std::cout << *at << std::endl;
+  }
+}
+
+void
+Record::parse_line() {
+
+  size_t pos = 0;
+  size_t prev_pos = 0;
+  const char * delim = ",";
+  const uint32_t delim_size = strlen(delim);
+
+  while (pos != string::npos) {
+
+      string columnname;
+
+      pos = line.find(delim, prev_pos);
+      if (pos != string::npos) {
+          columnname = line.substr(prev_pos, pos - prev_pos);
+      } else {
+          columnname = line.substr(prev_pos );
+      }
+
+      attributes.push_back(columnname);
+      prev_pos = pos + delim_size;
+  }
+}
+
+
+void
+parse_records(vector<Record> & records) {
+
+  vector<Record>::iterator record = records.begin();
+  for (; record != records.end(); ++record) {
+  //for (auto record : records) {
+    //std::cout << "parsing records..." << std::endl;
+    //record.print();
+    record->parse_line();
+    //record->print_attributes();
+    //break;
+  }
+  records[4].print_attributes();
+}
 
 void
 make_records_vector(vector<Record> & records) {
 
-
-  char * foo = (char*)malloc(1024*1024*512);
-  free(foo);
-
   std::cout << "Reading vector records..." << std::endl;
-  //vector<string> records(100);
-  //vector<Record> records;
+
   string filename("/data/patentdata/patents/full/full.csv");
   ifstream is(filename.c_str());
 
@@ -80,28 +124,25 @@ make_records_vector(vector<Record> & records) {
     if ((counter % 100000) == 0) std::cout << counter << std::endl;
     if (counter > 300000) break;
   }
-  std::cout << std::endl;
-
-#if 0
-  vector<string *>::const_iterator it = records.begin();
-  for (; it != records.end(); ++it) {
-    delete (*it);
-  }
-#endif
-
   std::cout << "Finished reading vector records..." << std::endl;
+  std::cout << std::endl;
 
 }
 
 
+#ifdef records_STANDALONE
 int
 main(int argc, char **) {
 
   //read_records();
   vector<Record> records;
   make_records_vector(records);
-  records[0].print();
-  records[14324].print();
+  //records[14324].print();
+  parse_records(records);
+
+  records[444].print_attributes();
 
   return 0;
 }
+#endif
+

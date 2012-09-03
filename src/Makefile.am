@@ -15,19 +15,22 @@ commit := $(shell git reflog -1)
 branch := $(shell git show-branch --reflog=1)
 
 bin_PROGRAMS = objects records
+objects_SOURCES = objects.cpp
+records_SOURCES = records.cpp
+
+noinst_LIBRARIES = libblocking.a
+libblocking_a_SOURCES = records.cpp
 
 ALL = objects
-ofiles = objects.o
+ofiles = objects.o records.o
 
 #all: $(ofiles)
 all: $(ALL)
 
-$(ofiles): %.o: %.cpp
+#$(ofiles): %.o: %.cpp
+%.o: %.cpp
 	echo $(commit)
-	g++ $(CXXFLAGS) -c -D$*_STANDALONE $(CPPUNIT_INCLUDES) $<
-
-objects_SOURCES = objects.cpp
-records_SOURCES = records.cpp
+	g++ $(CXXFLAGS) -c $(INCLUDES) -D$*_STANDALONE $(CPPUNIT_INCLUDES) $<
 
 clean:
 	rm -rf *~ a.out $(ALL) $(ofiles) *.sqlite3
