@@ -13,7 +13,8 @@ class Record {
     string line;
     vector<string> attributes;
   public:
-    Record(string l) : line(l) {
+
+    explicit Record(string l) : line(l) {
       parse_line();
     }
 
