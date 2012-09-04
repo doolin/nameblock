@@ -20,7 +20,7 @@ class Record {
 
     void parse_line();
 
-    void print_attributes();
+    void print_attributes() const;
 
     void print() {
       std::cout << line << std::endl;

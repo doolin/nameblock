@@ -15,7 +15,7 @@ using std::list;
 using std::map;
 using std::cout;
 
-typedef list<Record*> RecordPList;
+typedef list<const Record*> RecordPList;
 typedef vector<Record> Records;
 
 typedef map<string, RecordPList> Blocks;
@@ -25,10 +25,10 @@ typedef map<string, RecordPList> Blocks;
 
 
 void
-get_record_pointers(Records & records, RecordPList & rl) {
+get_record_pointers(const Records & records, RecordPList & rl) {
 
   int counter = 0;
-  Records::iterator rit = records.begin();
+  Records::const_iterator rit = records.begin();
   for (; rit != records.end(); ++rit) {
     rl.push_back(&(*rit));
     ++counter;
@@ -46,7 +46,7 @@ create_blocks(const RecordPList & rpl, Blocks & blocks) {
   Blocks::const_iterator b_it;
   for (; rit != rpl.end(); ++rit) {
 
-    Record * rp = *rit;
+    const Record * rp = *rit;
 
     string key = (*rit)->attributes[0];
     //cout << "key: " << key << std::endl;
@@ -119,7 +119,7 @@ parse_column_names(string line) {
 
 
 void
-Record::print_attributes() {
+Record::print_attributes() const {
 
   std::cout << "printing attributes..." << std::endl;
   vector<string>::const_iterator at = attributes.begin();
@@ -208,7 +208,7 @@ main(int argc, char **) {
   RecordPList rpl;
   get_record_pointers(records, rpl);
 
-  Record * rp = rpl.front();
+  const Record * rp = rpl.front();
 
   rp->print_attributes();
   cout << "Att: " << rp->attributes[0] << std::endl;
