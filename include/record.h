@@ -9,10 +9,10 @@ using std::vector;
 
 
 class Record {
-  private:
-    string line;
-    vector<string> attributes;
+
   public:
+
+    vector<string> attributes;
 
     explicit Record(string l) : line(l) {
       parse_line();
@@ -25,6 +25,10 @@ class Record {
     void print() {
       std::cout << line << std::endl;
     }
+
+  private:
+    string line;
+
 };
 
 
