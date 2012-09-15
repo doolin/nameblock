@@ -9,6 +9,7 @@
 #include <stdint.h>
 #include <string.h>
 
+#include "timer.h"
 #include "record.h"
 
 using std::ifstream;
@@ -22,7 +23,7 @@ typedef vector<Record> Records;
 typedef map<string, RecordPList> Blocks;
 
 #define NUM_ELEMENTS 10000
-#define MAX_ELEMENTS 1000000
+#define MAX_ELEMENTS 100000
 
 
 void
@@ -120,6 +121,7 @@ Record::print_attributes() const {
   }
 }
 
+
 void
 Record::parse_line() {
 
@@ -189,6 +191,9 @@ int
 main(int argc, char **) {
 
   //read_records();
+
+  Timer t;
+
   vector<Record> records;
   make_records_vector(records);
   //records[14324].print();
