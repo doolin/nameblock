@@ -23,7 +23,7 @@ typedef vector<Record> Records;
 typedef map<string, RecordPList> Blocks;
 
 #define NUM_ELEMENTS 10000
-#define MAX_ELEMENTS 100000
+#define MAX_ELEMENTS 1000001
 
 
 void
