@@ -3,6 +3,7 @@
 #include <list>
 #include <map>
 #include <unordered_set>
+#include <unordered_map>
 
 #include <stdlib.h>
 #include <stdint.h>
@@ -19,7 +20,32 @@ using std::cout;
 typedef list<const Record*> RecordPList;
 typedef vector<Record> Records;
 
-typedef map<string, RecordPList> Blocks;
+//typedef map<string, RecordPList> Blocks;
+//typedef std::unordered_set<string, RecordPList> Blocks;
+typedef std::unordered_map<string, RecordPList> Blocks;
+
+
+class Histogram {
+
+typedef map<uint32_t, uint32_t> Bucket;
+Bucket bucket;
+
+public:
+void add_to_bucket(uint32_t count) {
+bucket[count]++;
+}	
+
+void print() {
+
+ for (Bucket::const_iterator it = bucket.begin(); it != bucket.end(); ++it) {
+   std::cout << (*it).first << ", " << (*it).second << std::endl;
+ }
+
+
+}
+};
+
+Histogram h;
 
 #define NUM_ELEMENTS 10000
 #define MAX_ELEMENTS 1100001
@@ -42,8 +68,8 @@ get_record_pointers(const Records & records, RecordPList & rl) {
 
 string
 blocker(RecordPList::const_iterator rit) {
-  return string((*rit)->attributes[1]);
-  //return string((*rit)->attributes[1]) + string((*rit)->attributes[0]);
+  //return string((*rit)->attributes[1]);
+  return string((*rit)->attributes[1]) + string((*rit)->attributes[0]);
 }
 
 void
@@ -199,7 +225,9 @@ count_blocks(const Blocks & blocks) {
 
   for (Blocks::const_iterator it = blocks.begin(); it != blocks.end(); ++it) {
 
-    std::cout << (*it).first << ", " << (*it).second.size() << std::endl;
+	  h.add_to_bucket((*it).second.size());
+
+    //std::cout << (*it).first << ", " << (*it).second.size() << std::endl;
 
 	  /*
     if ((*it).second.size() > 1) {
@@ -240,6 +268,8 @@ main(int argc, char **) {
   //std::cout << "Blocks size: " << blocks.size() << std::endl;
 
   count_blocks(blocks);
+
+  h.print();
 
   return 0;
 }

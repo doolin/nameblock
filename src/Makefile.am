@@ -2,7 +2,7 @@
 export GLIBCXX_FORCE_NEW=1
 
 CC = g++
-CXXFLAGS = -std=c++11 -Wall -Wextra -Wno-unused-parameter
+CXXFLAGS = -std=c++11 -O3 -Wall -Wextra -Wno-unused-parameter
 
 INCLUDES = -I../include
 
