@@ -4,7 +4,7 @@ export GLIBCXX_FORCE_NEW=1
 CC = g++
 CXXFLAGS = -std=c++11 -O3 -Wall -Wextra -Wno-unused-parameter
 
-INCLUDES = -I../include
+AM_CPPFLAGS = -I../include
 
 CPPUNIT_LIBS = $(shell cppunit-config --libs)
 CPPUNIT_INCLUDES = $(shell cppunit-config --cflags)
@@ -32,7 +32,7 @@ all: $(ALL)
 #$(ofiles): %.o: %.cpp
 %.o: %.cpp
 	echo $(commit)
-	g++ $(CXXFLAGS) -c $(INCLUDES) -D$*_STANDALONE $(CPPUNIT_INCLUDES) $<
+	g++ $(CXXFLAGS) -c $(AM_CPPFLAGS) -D$*_STANDALONE $(CPPUNIT_INCLUDES) $<
 
 clean:
 	rm -rf *~ a.out $(ALL) $(ofiles) *.sqlite3

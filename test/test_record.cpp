@@ -3,20 +3,27 @@
 
 #include <cppunit/TestCase.h>
 
-//#include <disambiguation.h>
-//#include <engine.h>
+#include <record.h>
 
-//#include "record.h"
+#include "testutils.h"
+
 
 //#include <record_private.h>
 
 class RecordTest : public CppUnit::TestCase {
 
 public:
-  RecordTest(std::string name) : CppUnit::TestCase(name) {}
+  RecordTest(std::string name) : CppUnit::TestCase(name) {
+
+    describe_test(INDENT0, name.c_str());
+  }
 
   void test_parse_column_names() {
-    std::cout << "From record test..." << std::endl;
+
+    Spec spec;
+    spec.it("From records test", DO_SPEC {
+        return true;
+    });
   }
 
   void runTest() {
@@ -28,7 +35,7 @@ public:
 void
 test_records() {
 
-  RecordTest * rt = new RecordTest(std::string("initial test"));
+  RecordTest * rt = new RecordTest(std::string("Testing records"));
   rt->runTest();
   delete rt;
 }
