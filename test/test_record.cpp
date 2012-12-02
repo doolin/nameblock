@@ -84,15 +84,37 @@ public:
       c_blocks_iter_t it = blocks.find("DURAND");
       return (1 == (*it).second.size());
     });
-
   }
 
+
+  void test_parse_line() {
+
+    describe_test(INDENT2, __PRETTY_FUNCTION__);
+
+    string line("att1, att2, att 3, 4 att");
+    Record r(line);
+
+    Spec spec;
+    spec.it("should have the correct line and attributes", DO_SPEC_HANDLE {
+      return (line == r.line);
+    });
+
+    spec.it("should have 4 attributes", DO_SPEC_HANDLE {
+      return (4 == r.attributes.size());
+    });
+
+    spec.it("parses 'att1' for the first attribute", DO_SPEC_HANDLE {
+      return (string("att1") == r.attributes[0]);
+    });
+
+  }
 
   void runTest() {
     test_parse_column_names();
     test_make_records_vector();
     test_lastname_blocking();
     test_block_mann_count_2();
+    test_parse_line();
   }
 };
 

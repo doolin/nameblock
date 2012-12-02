@@ -160,16 +160,16 @@ Record::parse_line() {
 
   while (pos != string::npos) {
 
-      string columnname;
+      string field;
 
       pos = line.find(delim, prev_pos);
       if (pos != string::npos) {
-          columnname = line.substr(prev_pos, pos - prev_pos);
+          field = line.substr(prev_pos, pos - prev_pos);
       } else {
-          columnname = line.substr(prev_pos );
+          field = line.substr(prev_pos );
       }
 
-      attributes.push_back(columnname);
+      attributes.push_back(field);
       prev_pos = pos + delim_size;
   }
 }

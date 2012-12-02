@@ -15,6 +15,8 @@ using std::list;
 
 class Record {
 
+  friend class RecordTest;
+
   public:
 
     vector<string> attributes;
@@ -31,7 +33,7 @@ class Record {
       std::cout << line << std::endl;
     }
 
-  private:
+  protected:
     string line;
 
 };
