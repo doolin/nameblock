@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <unordered_set>
+#include <unordered_map>
 
 using std::string;
 using std::vector;
@@ -37,6 +39,14 @@ class Record {
 typedef list<const Record*> RecordPList;
 typedef vector<Record> Records;
 
+//typedef map<string, RecordPList> Blocks;
+//typedef std::unordered_set<string, RecordPList> Blocks;
+typedef std::unordered_map<string, RecordPList> Blocks;
+typedef Blocks::const_iterator c_blocks_iter_t;
+
+
 void make_records_vector(std::ifstream & is, Records & r);
+void get_record_pointers(const Records & r, RecordPList & rpl);
+void create_blocks(const RecordPList & rpl, Blocks & blocks);
 
 #endif // INVENTIUM_RECORD_H

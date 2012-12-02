@@ -2,8 +2,6 @@
 #include <fstream>
 #include <list>
 #include <map>
-#include <unordered_set>
-#include <unordered_map>
 
 #include <stdlib.h>
 #include <stdint.h>
@@ -16,10 +14,6 @@ using std::ifstream;
 using std::list;
 using std::map;
 using std::cout;
-
-//typedef map<string, RecordPList> Blocks;
-//typedef std::unordered_set<string, RecordPList> Blocks;
-typedef std::unordered_map<string, RecordPList> Blocks;
 
 
 class Histogram {
@@ -65,8 +59,8 @@ get_record_pointers(const Records & records, RecordPList & rl) {
 
 string
 blocker(RecordPList::const_iterator rit) {
-  //return string((*rit)->attributes[1]);
-  return string((*rit)->attributes[1]) + string((*rit)->attributes[0]);
+  return string((*rit)->attributes[1]);
+  //return string((*rit)->attributes[1]) + string((*rit)->attributes[0]);
 }
 
 
@@ -194,14 +188,10 @@ parse_records(vector<Record> & records) {
 void
 make_records_vector(ifstream & is, Records & records) {
 
-  //std::cout << "Reading vector records..." << std::endl;
-
   int counter = 0;
   string line;
   // Throw the header away for now
   if (is.good()) getline(is, line);
-
-  std::cout << "size: " << records.size() << std::endl;
 
   while (is.good()) {
     getline(is, line);
@@ -215,32 +205,20 @@ make_records_vector(ifstream & is, Records & records) {
     //if ((counter % NUM_ELEMENTS) == 0) std::cout << counter << std::endl;
     if (counter > MAX_ELEMENTS) break;
   }
-
-   if (is.bad()) {
-      perror("stream badbit. error state");
-   }
-  std::cout << "size: " << records.size() << std::endl;
-
-  //std::cout << "Finished reading vector records..." << std::endl;
-  //std::cout << std::endl;
-
 }
 
 
 void
 count_blocks(const Blocks & blocks) {
 
+  /*
   for (Blocks::const_iterator it = blocks.begin(); it != blocks.end(); ++it) {
-
 	  h.add_to_bucket((*it).second.size());
+  }
+  */
 
-    //std::cout << (*it).first << ", " << (*it).second.size() << std::endl;
-
-	  /*
-    if ((*it).second.size() > 1) {
-      std::cout << "Size: " << (*it).second.size() << std::endl;
-    }
-    */
+  for (auto block : blocks) {
+    h.add_to_bucket(block.second.size());
   }
 
 }
