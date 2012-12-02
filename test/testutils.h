@@ -5,6 +5,8 @@
 
 #include <cppunit/TestCase.h>
 
+#include "macros.h"
+
 #define DESCCOLOR COLOR45
 #define PASSCOLOR COLOR119
 #define FAILCOLOR COLOR124
@@ -24,7 +26,7 @@ void describe_pass(const char * indent, const char * description);
 void describe_fail(const char * indent, const char * description);
 void describe_pending(const char * indent, const char * description);
 
-#define DO_SPEC [](Description d)->bool
+#define DO_SPEC [](Description UP(d))->bool
 #define DO_SPEC_THIS [this](Description d)->bool
 #define DO_SPEC_HANDLE [&](Description d)->bool
 
@@ -47,7 +49,7 @@ public:
     d(INDENT4, buf);
   }
 
-  void xit (Description desc, std::function<bool(Description)> test) {
+  void xit (Description desc, std::function<bool(Description)> UP(test)) {
 
     describe_pending(INDENT4, desc);
   }
