@@ -14,20 +14,23 @@ LDFLAGS=$(CPPUNIT_LIBS) -lsqlite3
 commit := $(shell git reflog -1)
 branch := $(shell git show-branch --reflog=1)
 
-bin_PROGRAMS = objects records timer
+
+LDADD = libblocking.a
+bin_PROGRAMS = objects recordloader timer
 objects_SOURCES = objects.cpp
-records_SOURCES = records.cpp
+recordloader_SOURCES = recordloader.cpp
 timer_SOURCES   = timer.cpp
 
 noinst_LIBRARIES = libblocking.a libtimer.a
 libblocking_a_SOURCES = records.cpp
 libtimer_a_SOURCES = timer.cpp
 
-ALL = objects
-ofiles = objects.o records.o timer.o
+ALL = objects recordloader timer
+ofiles = objects.o records.o timer.o recordloader.o
 
 #all: $(ofiles)
 all: $(ALL)
+
 
 #$(ofiles): %.o: %.cpp
 %.o: %.cpp

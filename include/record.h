@@ -1,12 +1,15 @@
 #ifndef INVENTIUM_RECORD_H
 #define INVENTIUM_RECORD_H
 
+#include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
+#include <list>
 
 using std::string;
 using std::vector;
-
+using std::list;
 
 class Record {
 
@@ -31,6 +34,9 @@ class Record {
 
 };
 
+typedef list<const Record*> RecordPList;
+typedef vector<Record> Records;
 
+void make_records_vector(std::ifstream & is, Records & r);
 
 #endif // INVENTIUM_RECORD_H

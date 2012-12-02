@@ -19,6 +19,7 @@ bin_PROGRAMS = $(TESTS)
 objects_SOURCES = test_objects.cpp
 #objects_LDADD = $(LDADD)
 records_SOURCES = test_record.cpp testutils.cpp
+records_LDADD = $(LDADD)
 
 relink:
 	rm -rf $(TESTS)
