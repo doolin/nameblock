@@ -2,8 +2,6 @@
 #include <fstream>
 #include <list>
 #include <map>
-#include <unordered_set>
-#include <unordered_map>
 
 #include <stdlib.h>
 #include <stdint.h>
@@ -17,34 +15,26 @@ using std::list;
 using std::map;
 using std::cout;
 
-typedef list<const Record*> RecordPList;
-typedef vector<Record> Records;
-
-//typedef map<string, RecordPList> Blocks;
-//typedef std::unordered_set<string, RecordPList> Blocks;
-typedef std::unordered_map<string, RecordPList> Blocks;
-
 
 class Histogram {
 
-typedef map<uint32_t, uint32_t> Bucket;
-Bucket bucket;
+  typedef map<uint32_t, uint32_t> Bucket;
+  Bucket bucket;
 
 public:
-void add_to_bucket(uint32_t count) {
-bucket[count]++;
-}	
 
-void print() {
+  void print() {
+    //std::cout << "Bucket size, Bucket count" << (*it).second << std::endl;
+    for (Bucket::const_iterator it = bucket.begin(); it != bucket.end(); ++it) {
+      std::cout << (*it).first << ", " << (*it).second << std::endl;
+    }
+  }
 
- std::cout << "Bucket size, Bucket count" << (*it).second << std::endl;
- for (Bucket::const_iterator it = bucket.begin(); it != bucket.end(); ++it) {
-   std::cout << (*it).first << ", " << (*it).second << std::endl;
- }
-
-
-}
+  void add_to_bucket(uint32_t count) {
+    bucket[count]++;
+  }	
 };
+
 
 Histogram h;
 
@@ -69,11 +59,12 @@ get_record_pointers(const Records & records, RecordPList & rl) {
 
 string
 blocker(RecordPList::const_iterator rit) {
+
   //return string((*rit)->attributes[1]);
   //return string((*rit)->attributes[1]) + string((*rit)->attributes[0]);
 
-	//*
-	// Get first char of first name
+  //*
+  // Get first char of first name
   string s = string((*rit)->attributes[0]);
   if (!s.empty()) {
 	  return string((*rit)->attributes[1]) + s[0];
@@ -82,6 +73,8 @@ blocker(RecordPList::const_iterator rit) {
   }
   //*/
 
+  return string((*rit)->attributes[1]);
+  //return string((*rit)->attributes[1]) + string((*rit)->attributes[0]);
 }
 
 
@@ -113,6 +106,8 @@ create_blocks(const RecordPList & rpl, Blocks & blocks) {
 }
 
 
+// This function was used for testing memory and performance,
+// but is not used at the moment.
 void
 read_records() {
 
@@ -179,16 +174,16 @@ Record::parse_line() {
 
   while (pos != string::npos) {
 
-      string columnname;
+      string field;
 
       pos = line.find(delim, prev_pos);
       if (pos != string::npos) {
-          columnname = line.substr(prev_pos, pos - prev_pos);
+          field = line.substr(prev_pos, pos - prev_pos);
       } else {
-          columnname = line.substr(prev_pos );
+          field = line.substr(prev_pos );
       }
 
-      attributes.push_back(columnname);
+      attributes.push_back(field);
       prev_pos = pos + delim_size;
   }
 }
@@ -199,60 +194,65 @@ parse_records(vector<Record> & records) {
 
   vector<Record>::iterator record = records.begin();
   for (; record != records.end(); ++record) {
-  //for (auto record : records) {
-    //std::cout << "parsing records..." << std::endl;
-    //record.print();
     record->parse_line();
-    //record->print_attributes();
-    //break;
   }
-  //records[4].print_attributes();
 }
 
+
 void
-make_records_vector(vector<Record> & records) {
-
-  //std::cout << "Reading vector records..." << std::endl;
-
-  string filename("/data/patentdata/patents/full/full.csv");
-  ifstream is(filename.c_str());
+make_records_vector(ifstream & is, Records & records) {
 
   int counter = 0;
   string line;
+  // Throw the header away for now
+  if (is.good()) getline(is, line);
+
   while (is.good()) {
     getline(is, line);
+    if (line.empty()) {
+      break;
+    }
     Record r(line);
     records.push_back(r);
+
     ++counter;
     //if ((counter % NUM_ELEMENTS) == 0) std::cout << counter << std::endl;
     if (counter > MAX_ELEMENTS) break;
   }
-  //std::cout << "Finished reading vector records..." << std::endl;
-  //std::cout << std::endl;
-
 }
 
 
 void
 count_blocks(const Blocks & blocks) {
 
+  /*
   for (Blocks::const_iterator it = blocks.begin(); it != blocks.end(); ++it) {
+<<<<<<< HEAD
     h.add_to_bucket((*it).second.size());
     //std::cout << (*it).first << ", " << (*it).second.size() << std::endl;
+=======
+	  h.add_to_bucket((*it).second.size());
+  }
+  */
+
+  for (auto block : blocks) {
+    h.add_to_bucket(block.second.size());
   }
 }
 
 
-#ifdef records_STANDALONE
-int
-main(int argc, char **) {
+void
+read_all_records() {
 
   //read_records();
 
   Timer t;
 
   vector<Record> records;
-  make_records_vector(records);
+  string filename("/data/patentdata/patents/full/full.csv");
+  ifstream is(filename.c_str());
+  make_records_vector(is, records);
+
   //records[14324].print();
   //parse_records(records);
 
@@ -275,7 +275,5 @@ main(int argc, char **) {
 
   h.print();
 
-  return 0;
 }
-#endif
 
