@@ -21,20 +21,21 @@ class Record {
 
     vector<string> attributes;
 
-    explicit Record(string l) : line(l) {
-      parse_line();
+    explicit Record(string l) { //: line(l) {
+      parse_line(l);
     }
 
-    void parse_line();
+    void parse_line(string & l);
 
     void print_attributes() const;
 
     void print() {
-      std::cout << line << std::endl;
+      //std::cout << line << std::endl;
     }
 
   protected:
-    string line;
+
+  //string line;
 
 };
 

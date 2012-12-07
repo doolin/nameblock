@@ -165,7 +165,7 @@ Record::print_attributes() const {
 
 
 void
-Record::parse_line() {
+Record::parse_line(string & line) {
 
   size_t pos = 0;
   size_t prev_pos = 0;
@@ -194,7 +194,9 @@ parse_records(vector<Record> & records) {
 
   vector<Record>::iterator record = records.begin();
   for (; record != records.end(); ++record) {
-    record->parse_line();
+    // when the line is stored by the record, we
+    // can do two-pass
+    //record->parse_line();
   }
 }
 
