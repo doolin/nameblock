@@ -11,8 +11,8 @@ CPPUNIT_INCLUDES = $(shell cppunit-config --cflags)
 
 LDFLAGS=$(CPPUNIT_LIBS) -lsqlite3
 
-commit := $(shell git reflog -1)
-branch := $(shell git show-branch --reflog=1)
+### commit := $(shell git reflog -1)
+### branch := $(shell git show-branch --reflog=1)
 
 
 LDADD = libblocking.a
@@ -34,7 +34,7 @@ all: $(ALL)
 
 #$(ofiles): %.o: %.cpp
 %.o: %.cpp
-	echo $(commit)
+#	echo $(commit)
 	g++ $(CXXFLAGS) -c $(AM_CPPFLAGS) -D$*_STANDALONE $(CPPUNIT_INCLUDES) $<
 
 clean:
