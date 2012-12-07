@@ -164,6 +164,8 @@ Record::print_attributes() const {
 }
 
 
+/** Superfluous comment to help learn git rebase.
+ */
 void
 Record::parse_line(string & line) {
 
