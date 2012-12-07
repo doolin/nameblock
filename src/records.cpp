@@ -37,6 +37,7 @@ bucket[count]++;
 
 void print() {
 
+ std::cout << "Bucket size, Bucket count" << (*it).second << std::endl;
  for (Bucket::const_iterator it = bucket.begin(); it != bucket.end(); ++it) {
    std::cout << (*it).first << ", " << (*it).second << std::endl;
  }
@@ -48,7 +49,7 @@ void print() {
 Histogram h;
 
 #define NUM_ELEMENTS 10000
-#define MAX_ELEMENTS 1100001
+#define MAX_ELEMENTS 11000001
 
 // Fast and dirty histogram from the command line:
 // cat tmp.txt | awk '{print $2; FS = ", "}' | sort | uniq -c | sort -rn > histo2.txt
@@ -69,8 +70,20 @@ get_record_pointers(const Records & records, RecordPList & rl) {
 string
 blocker(RecordPList::const_iterator rit) {
   //return string((*rit)->attributes[1]);
-  return string((*rit)->attributes[1]) + string((*rit)->attributes[0]);
+  //return string((*rit)->attributes[1]) + string((*rit)->attributes[0]);
+
+	//*
+	// Get first char of first name
+  string s = string((*rit)->attributes[0]);
+  if (!s.empty()) {
+	  return string((*rit)->attributes[1]) + s[0];
+  } else {
+	  return string((*rit)->attributes[1]);
+  }
+  //*/
+
 }
+
 
 void
 create_blocks(const RecordPList & rpl, Blocks & blocks) {
@@ -224,18 +237,9 @@ void
 count_blocks(const Blocks & blocks) {
 
   for (Blocks::const_iterator it = blocks.begin(); it != blocks.end(); ++it) {
-
-	  h.add_to_bucket((*it).second.size());
-
+    h.add_to_bucket((*it).second.size());
     //std::cout << (*it).first << ", " << (*it).second.size() << std::endl;
-
-	  /*
-    if ((*it).second.size() > 1) {
-      std::cout << "Size: " << (*it).second.size() << std::endl;
-    }
-*/
   }
-
 }
 
 
