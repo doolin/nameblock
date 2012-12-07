@@ -13,6 +13,8 @@ using std::string;
 using std::vector;
 using std::list;
 
+// Comment for pushing the rebase
+
 class Record {
 
   friend class RecordTest;
@@ -30,11 +32,14 @@ class Record {
     void print_attributes() const;
 
     void print() {
+      // TODO: Change to print attributes
       //std::cout << line << std::endl;
     }
 
   protected:
 
+  // Save memory, the parsed line is in the
+  // attributes vector.
   //string line;
 
 };

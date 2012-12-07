@@ -24,6 +24,8 @@ class Histogram {
 public:
 
   void print() {
+    // TODO: Fixme: need to look back through the commits to
+    // find out what got deleted when the merge conflict was fixed.
     //std::cout << "Bucket size, Bucket count" << (*it).second << std::endl;
     for (Bucket::const_iterator it = bucket.begin(); it != bucket.end(); ++it) {
       std::cout << (*it).first << ", " << (*it).second << std::endl;
