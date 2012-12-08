@@ -59,13 +59,19 @@ get_record_pointers(const Records & records, RecordPList & rl) {
 }
 
 
+/**
+ * The blocking predicate affects the
+ * tag value, which affects the test code.
+ * TODO: Find a way to configure the blocking
+ * predicate via an API.
+ */
 string
 blocker(RecordPList::const_iterator rit) {
 
   //return string((*rit)->attributes[1]);
   //return string((*rit)->attributes[1]) + string((*rit)->attributes[0]);
 
-  //*
+  /*
   // Get first char of first name
   string s = string((*rit)->attributes[0]);
   if (!s.empty()) {
@@ -73,7 +79,7 @@ blocker(RecordPList::const_iterator rit) {
   } else {
 	  return string((*rit)->attributes[1]);
   }
-  //*/
+  */
 
   return string((*rit)->attributes[1]);
   //return string((*rit)->attributes[1]) + string((*rit)->attributes[0]);

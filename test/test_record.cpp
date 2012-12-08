@@ -74,6 +74,8 @@ public:
 
     describe_test(INDENT2, __PRETTY_FUNCTION__);
 
+    // TODO: Need to set the blocking predicate somewhere, because
+    // block tag clearly depends on the the predicate.
     Spec spec;
     spec.it("Block bucket tagged 'MANN' should have count 2", DO_SPEC_HANDLE {
       c_blocks_iter_t it = blocks.find("MANN");
