@@ -64,6 +64,9 @@ get_record_pointers(const Records & records, RecordPList & rl) {
  * tag value, which affects the test code.
  * TODO: Find a way to configure the blocking
  * predicate via an API.
+ * TODO: check into how dependency injection
+ * might (or might not) solve this problem
+ * elegantly.
  */
 string
 blocker(RecordPList::const_iterator rit) {
