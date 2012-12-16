@@ -259,6 +259,7 @@ read_all_records() {
   Timer t;
 
   vector<Record> records;
+  // This is the DVN output, 9.3M records
   string filename("/data/patentdata/patents/full/full.csv");
   ifstream is(filename.c_str());
   make_records_vector(is, records);
