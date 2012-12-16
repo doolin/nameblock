@@ -41,7 +41,7 @@ public:
 Histogram h;
 
 #define NUM_ELEMENTS 10000
-#define MAX_ELEMENTS 11000001
+#define MAX_ELEMENTS 11001
 
 // Fast and dirty histogram from the command line:
 // cat tmp.txt | awk '{print $2; FS = ", "}' | sort | uniq -c | sort -rn > histo2.txt
