@@ -3,12 +3,12 @@
 
 ## Full plot
 
-![Full range of blocking](./images/nameblocking.png "Blocking on USPTO inventor name")
+![Full range of blocking](https://raw.github.com/doolin/nameblock/master/doc/images/nameblocking.png "Blocking on USPTO inventor name")
 
 ## Partial
 
-![Full range of blocking](./images/onetohundred.png "Blocking on USPTO inventor name")
+![Full range of blocking](https://raw.github.com/doolin/nameblock/master/doc/images/onetohundred.png "Blocking on USPTO inventor name")
 
 ## Increasing uniqueness
 
-![Full range of blocking](./images/onetofifty.png "Blocking on USPTO inventor name")
+![Full range of blocking](./images/https://raw.github.com/doolin/nameblock/master/doc/images/onetofifty.png "Blocking on USPTO inventor name")
