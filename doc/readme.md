@@ -50,18 +50,18 @@ one.
 
 
 As expected, the more specific the blocking criteria, the fewer number
-of elements in each block, which can be seen as the values along the *y*
+of members in each block, which can be seen as the values along the *y*
 axis:
 
-* Lastname only blocking: 177746 blocks have a single element, 71849
-have only two elements. This case lumps "Steve Smith" and "Jim Smith"
+* Lastname only blocking: 177746 blocks have a single member, 71849
+have only two members. This case lumps "Steve Smith" and "Jim Smith"
 into the same block.
 * Lastname and first initial blocking: 462165 blocks have a single
-element, 176783 have two elements. This case splits Steve and Jim Smith
+member, 176783 have two members. This case splits Steve and Jim Smith
 into separate blocks, but would lump Jim Johnson and John Johnson into
 the same block.
-* Lastname and firstname blocking: 1360582 blocks have a single element,
-436765 have two elements. This case would split Jim and John Johnson.
+* Lastname and firstname blocking: 1360582 blocks have a single member,
+436765 have two members. This case would split Jim and John Johnson.
 
 
 Let's take a closer look at the values where the block sizes are small
@@ -70,10 +70,11 @@ and the number of blocks for a given size is large.
 ## Partial
 
 Here, we're zoomed in to the range of blocks which have between 1 and
-100 elements (inclusive). As noted, there are a large number of blocks
-with a single element, regardless of the blocking criteria.
+100 members (inclusive). As noted, there are a large number of blocks
+with a single member, regardless of the blocking criteria.
 
-Of note is how the slope differs with respect to the blocking rule.
+Of note is how the slope differs with respect to the blocking rule. Even
+more interesting is that the values clearly cross.
 
 ![Full range of blocking](https://raw.github.com/doolin/nameblock/master/doc/images/onetohundred.png "Blocking on USPTO inventor name")
 
