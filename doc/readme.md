@@ -53,15 +53,15 @@ As expected, the more specific the blocking criteria, the fewer number
 of members in each block, which can be seen as the values along the *y*
 axis:
 
-* Lastname only blocking: 177746 blocks have a single member, 71849
+* Lastname only blocking: 177,746 blocks have a single member, 71,849
 have only two members. This case lumps "Steve Smith" and "Jim Smith"
 into the same block.
-* Lastname and first initial blocking: 462165 blocks have a single
-member, 176783 have two members. This case splits Steve and Jim Smith
+* Lastname and first initial blocking: 462,165 blocks have a single
+member, 176,783 have two members. This case splits Steve and Jim Smith
 into separate blocks, but would lump Jim Johnson and John Johnson into
 the same block.
-* Lastname and firstname blocking: 1360582 blocks have a single member,
-436765 have two members. This case would split Jim and John Johnson.
+* Lastname and firstname blocking: 1,360,582 blocks have a single member,
+436,765 have two members. This case would split Jim and John Johnson.
 
 
 Let's take a closer look at the values where the block sizes are small
