@@ -19,7 +19,8 @@ The action of sorting and grouping is commonly referred to as "blocking"
 within the community of people who do that sort of things. 
 
 The grouping rules matter. Taking only last names, for example "Smith",
-puts "Steve" and "Jim" into the same block.
+puts "Steve" and "Jim" into the same block, which for purposes explained
+later, would be tagged "SMITH".
 
 For the entire USPTO inventor name set, the green crosses on the plot
 below correspond to blocks of last names.
@@ -50,15 +51,35 @@ the same block.
 436765 have two elements. This case would split Jim and John Johnson.
 
 
-
+Let's take a closer look at the values where the block sizes are small
+and the number of blocks for a given size is large.
 
 ## Partial
+
+Here, we're zoomed in to the range of blocks which have between 1 and
+100 elements (inclusive). As noted, there are a large number of blocks
+with a single element, regardless of the blocking criteria.
+
+Of note is how the slope differs with respect to the blocking rule.
 
 ![Full range of blocking](https://raw.github.com/doolin/nameblock/master/doc/images/onetohundred.png "Blocking on USPTO inventor name")
 
 ## Increasing uniqueness
 
+Now we're taking a really close look at the "unique" end of the plot.
+
 ![Full range of blocking](https://raw.github.com/doolin/nameblock/master/doc/images/onetofifty.png "Blocking on USPTO inventor name")
 
+
+## Summary
+
+
+### Further reading
+
+Name frequencies are a special case of word frequencies, and have many
+of the same strange and beautiful properties. Here are a few links:
+
+* [Zipf and Mandelbrot
+(Wikipedia)](http://en.wikipedia.org/wiki/Zipf's_law)
 
 
