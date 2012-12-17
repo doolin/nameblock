@@ -11,4 +11,4 @@
 
 ## Increasing uniqueness
 
-![Full range of blocking](./images/https://raw.github.com/doolin/nameblock/master/doc/images/onetofifty.png "Blocking on USPTO inventor name")
+![Full range of blocking](https://raw.github.com/doolin/nameblock/master/doc/images/onetofifty.png "Blocking on USPTO inventor name")
