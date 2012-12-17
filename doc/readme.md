@@ -33,8 +33,21 @@ below correspond to blocks of last names.
 
 The plots all show the same data, with each plot focusing on a different
 view of the data. The full plot above shows how more than 9.3M names are
-blocked. The values along the *x* axis show the number of distinct tags
-within each block of a certain size.
+blocked. The values along the *x* axis are block sizes; along the
+'''y''' axis, the count of blocks of a specific size. That is:
+
+* Block size: the number of names grouped together with respect to a
+specific block tag.
+* Block count: the number of blocks having the same size.
+
+For example, suppose we block on last name. Further, we a block with tag
+SMITH containing Jim Smith and John Smith, and a block with tag JOHNSON
+containing John Johnson. Then we have a block of size 2 and a block of
+size 1. Now we find another block tagged JONES containing Joe Jones and
+Jerry Jones. Now we have two blocks of size two and one block of size
+one.
+
+
 
 As expected, the more specific the blocking criteria, the fewer number
 of elements in each block, which can be seen as the values along the *y*
