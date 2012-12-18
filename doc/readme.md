@@ -1,8 +1,10 @@
 # Some properties of USPTO inventor names
 
 
-These plots show the "tag" counts for each block for the entire
-1975-2010 USPTO inventor names.
+These plots show the tag counts for each block for the entire
+1975-2010 USPTO inventor names. Tags are pre-specified character
+sequences - strings - which specify how names are grouped.
+Collectively, tags are created using blocking criteria.
 
 Let's look at some examples.
 
