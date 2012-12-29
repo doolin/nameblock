@@ -7,7 +7,7 @@ LDADD = ../src/libblocking.a
 AM_LDFLAGS = $(shell cppunit-config --libs)
 
 
-TESTS = objects records
+TESTS = objects records comparators
 
 bin_PROGRAMS = $(TESTS)
 
@@ -20,6 +20,11 @@ objects_SOURCES = test_objects.cpp
 #objects_LDADD = $(LDADD)
 records_SOURCES = test_record.cpp testutils.cpp
 records_LDADD = $(LDADD)
+
+comparators_SOURCES = test_comparators.cpp testutils.cpp
+comparators_LDADD = $(LDADD)
+
+
 
 relink:
 	rm -rf $(TESTS)
