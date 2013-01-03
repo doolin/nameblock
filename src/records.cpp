@@ -9,6 +9,7 @@
 
 #include "timer.h"
 #include "record.h"
+#include "comparators.h"
 
 using std::ifstream;
 using std::list;
@@ -252,11 +253,19 @@ count_blocks(const Blocks & blocks) {
 
 
 void
+compute_similarity(Record * r1, Record * r2) {
+
+  uint32_t similarity = compare_names(r1->attributes[0], r2->attributes[1]);
+
+}
+
+
+void
 read_all_records() {
 
   //read_records();
 
-  Timer t;
+  //Timer t;
 
   vector<Record> records;
   // This is the DVN output, 9.3M records
@@ -272,7 +281,7 @@ read_all_records() {
   RecordPList rpl;
   get_record_pointers(records, rpl);
 
-  const Record * rp = rpl.front();
+  //const Record * rp = rpl.front();
 
   //rp->print_attributes();
   //cout << "Att: " << rp->attributes[0] << std::endl;
@@ -285,6 +294,7 @@ read_all_records() {
   count_blocks(blocks);
 
   h.print();
+
 
 }
 
