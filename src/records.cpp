@@ -237,14 +237,6 @@ make_records_vector(ifstream & is, Records & records) {
 void
 count_blocks(const Blocks & blocks) {
 
-  /*
-  for (Blocks::const_iterator it = blocks.begin(); it != blocks.end(); ++it) {
-    h.add_to_bucket((*it).second.size());
-    //std::cout << (*it).first << ", " << (*it).second.size() << std::endl;
-	  h.add_to_bucket((*it).second.size());
-  }
-  */
-
   for (auto block : blocks) {
     std::cout << block.first << ", " << block.second.size() << std::endl;
     h.add_to_bucket(block.second.size());
