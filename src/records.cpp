@@ -255,12 +255,13 @@ count_blocks(const Blocks & blocks) {
 #define COAUTHOR   0
 
 vector<uint32_t>
-compute_similarity(Record * r1, Record * r2) {
+compare_records(Record * r1, Record * r2) {
 
   vector<uint32_t> similarity;
   similarity.push_back(compare_names(r1->attributes[LASTNAME],
                                      r2->attributes[LASTNAME]));
 
+  //std::cout << "similarity: " << similarity[0] << std::endl;
   return similarity;
 }
 
@@ -269,7 +270,6 @@ void
 read_all_records() {
 
   //read_records();
-
   //Timer t;
 
   vector<Record> records;
@@ -280,14 +280,12 @@ read_all_records() {
 
   //records[14324].print();
   //parse_records(records);
-
   //records[444].print_attributes();
 
   RecordPList rpl;
   get_record_pointers(records, rpl);
 
   //const Record * rp = rpl.front();
-
   //rp->print_attributes();
   //cout << "Att: " << rp->attributes[0] << std::endl;
 
@@ -299,7 +297,5 @@ read_all_records() {
   count_blocks(blocks);
 
   h.print();
-
-
 }
 

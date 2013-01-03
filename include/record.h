@@ -57,4 +57,6 @@ void make_records_vector(std::ifstream & is, Records & r);
 void get_record_pointers(const Records & r, RecordPList & rpl);
 void create_blocks(const RecordPList & rpl, Blocks & blocks);
 
+vector<uint32_t> compare_records(Record * r1, Record * r2);
+
 #endif // INVENTIUM_RECORD_H

@@ -97,9 +97,6 @@ public:
     Record r(line);
 
     Spec spec;
-    spec.xit("should have the correct line and attributes", DO_SPEC_HANDLE {
-      //return (line == r.line);
-    });
 
     spec.it("should have 4 attributes", DO_SPEC_HANDLE {
       return (4 == r.attributes.size());
@@ -111,11 +108,32 @@ public:
 
   }
 
+
+  void test_compare_records() {
+
+    describe_test(INDENT2, __PRETTY_FUNCTION__);
+
+    string line("att1, att2, att 3, 4 att");
+    Record r1(line);
+    Record r2(line);
+
+    vector<uint32_t> simprof{1};
+    //std::cout << "simprof: " << simprof[0] << std::endl;
+    Spec spec;
+    spec.it("Records should be identical", DO_SPEC_HANDLE {
+      return (simprof == compare_records(&r1, &r2));
+    });
+
+
+  }
+
+
   void runTest() {
     test_parse_column_names();
     test_make_records_vector();
     test_lastname_blocking();
     test_block_mann_count_2();
+    test_compare_records();
     test_parse_line();
   }
 };
