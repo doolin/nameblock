@@ -28,6 +28,15 @@ AC_CHECK_LIB([sqlite3], [main])
 # FIXME: Replace `main' with a function in `-lcppunit':
 AC_CHECK_LIB([cppunit], [main])
 
+# FIXME: Replace `main' with a function in `-lyaml':
+AC_CHECK_LIB([yaml], [main])
+
+# FIXME: Replace `main' with a function in `-lyaml-cpp':
+AC_CHECK_LIB([yaml-cpp], [Dump])
+
+dnl # Look for the yaml-cpp header file.  If it isn't found, terminate.
+dnl AC_CHECK_HEADER(yaml-cpp/yaml.h, [], [AC_MSG_ERROR([Couldn't find or include yaml.h])], /opt/local/include)
+
 # Checks for header files.
 AC_CHECK_HEADERS([string.h unistd.h getopt.h])
 
