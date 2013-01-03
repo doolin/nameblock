@@ -7,7 +7,8 @@
 
 #include <record.h>
 #include <macros.h>
-//#include <record_private.h>
+
+#include <comparators.h>
 
 #include "testutils.h"
 
@@ -36,9 +37,9 @@ public:
     describe_test(INDENT2, __PRETTY_FUNCTION__);
 
     Spec spec;
-    spec.xit("From name similarity test %d", DO_SPEC_HANDLE {
+    spec.it("From name similarity test %d", DO_SPEC_HANDLE {
         sprintf(spec.buf, d, 1);
-        return true;
+        return (0 == name_compare());
     });
   }
 
