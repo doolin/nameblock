@@ -39,7 +39,7 @@ public:
     Spec spec;
     spec.it("From name similarity test %d", DO_SPEC_HANDLE {
         sprintf(spec.buf, d, 1);
-        return (0 == compare_names());
+        return (1 == compare_names(string("foo"), string("foo")));
     });
   }
 
@@ -51,7 +51,7 @@ public:
     Spec spec;
     spec.it("From location similarity test %d", DO_SPEC_HANDLE {
         sprintf(spec.buf, d, 1);
-        return (0 == compare_locations());
+        return (1 == compare_locations(string("foo"), string("foo")));
     });
   }
 
@@ -62,7 +62,7 @@ public:
     Spec spec;
     spec.it("From assignee similarity test %d", DO_SPEC_HANDLE {
         sprintf(spec.buf, d, 1);
-        return (0 == compare_assignees());
+        return (1 == compare_assignees(string("foo"), string("foo")));
     });
   }
 
@@ -73,7 +73,7 @@ public:
     Spec spec;
     spec.it("From class similarity test %d", DO_SPEC_HANDLE {
         sprintf(spec.buf, d, 1);
-        return (0 == compare_classes());
+        return (1 == compare_classes(string("foo"), string("foo")));
     });
   }
 
@@ -85,7 +85,7 @@ public:
     Spec spec;
     spec.it("From coauthor similarity test %d", DO_SPEC_HANDLE {
         sprintf(spec.buf, d, 1);
-        return (0 == compare_coauthors());
+        return (1 == compare_coauthors(string("foo"), string("foo")));
     });
   }
 
