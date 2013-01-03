@@ -3,6 +3,10 @@
 
 #include <cstdint>
 
-uint32_t name_compare();
+uint32_t compare_names();
+uint32_t compare_locations();
+uint32_t compare_assignees();
+uint32_t compare_classes();
+uint32_t compare_coauthors();
 
 #endif /* PATENT_COMPARATORS_H */

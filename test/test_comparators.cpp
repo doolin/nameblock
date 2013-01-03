@@ -39,7 +39,7 @@ public:
     Spec spec;
     spec.it("From name similarity test %d", DO_SPEC_HANDLE {
         sprintf(spec.buf, d, 1);
-        return (0 == name_compare());
+        return (0 == compare_names());
     });
   }
 
@@ -49,9 +49,9 @@ public:
     describe_test(INDENT2, __PRETTY_FUNCTION__);
 
     Spec spec;
-    spec.xit("From location similarity test %d", DO_SPEC_HANDLE {
+    spec.it("From location similarity test %d", DO_SPEC_HANDLE {
         sprintf(spec.buf, d, 1);
-        return true;
+        return (0 == compare_locations());
     });
   }
 
@@ -60,9 +60,9 @@ public:
     describe_test(INDENT2, __PRETTY_FUNCTION__);
 
     Spec spec;
-    spec.xit("From assignee similarity test %d", DO_SPEC_HANDLE {
+    spec.it("From assignee similarity test %d", DO_SPEC_HANDLE {
         sprintf(spec.buf, d, 1);
-        return true;
+        return (0 == compare_assignees());
     });
   }
 
@@ -71,9 +71,9 @@ public:
     describe_test(INDENT2, __PRETTY_FUNCTION__);
 
     Spec spec;
-    spec.xit("From class similarity test %d", DO_SPEC_HANDLE {
+    spec.it("From class similarity test %d", DO_SPEC_HANDLE {
         sprintf(spec.buf, d, 1);
-        return true;
+        return (0 == compare_classes());
     });
   }
 
@@ -83,9 +83,9 @@ public:
     describe_test(INDENT2, __PRETTY_FUNCTION__);
 
     Spec spec;
-    spec.xit("From coauthor similarity test %d", DO_SPEC_HANDLE {
+    spec.it("From coauthor similarity test %d", DO_SPEC_HANDLE {
         sprintf(spec.buf, d, 1);
-        return true;
+        return (0 == compare_coauthors());
     });
   }
 
@@ -95,7 +95,6 @@ public:
     test_location_similarity();
     test_assignee_similarity();
     test_class_similarity();
-    test_coauthor_similarity();
     test_coauthor_similarity();
   }
 
