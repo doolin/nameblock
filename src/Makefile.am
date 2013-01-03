@@ -22,7 +22,7 @@ recordloader_SOURCES = recordloader.cpp
 timer_SOURCES   = timer.cpp
 
 noinst_LIBRARIES = libblocking.a libtimer.a
-libblocking_a_SOURCES = records.cpp
+libblocking_a_SOURCES = records.cpp comparators.cpp
 libtimer_a_SOURCES = timer.cpp
 
 ALL = objects recordloader timer
