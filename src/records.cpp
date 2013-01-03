@@ -252,11 +252,24 @@ count_blocks(const Blocks & blocks) {
 }
 
 
-void
+// These will go away eventually.
+// They currently depend on the position in the csv file.
+#define FIRSTNAME  0
+#define LASTNAME   1
+#define MIDDLENAME 22
+#define ASSIGNEE   15
+#define LOCATION   0
+#define CLASS      0
+#define COAUTHOR   0
+
+vector<uint32_t>
 compute_similarity(Record * r1, Record * r2) {
 
-  uint32_t similarity = compare_names(r1->attributes[0], r2->attributes[1]);
+  vector<uint32_t> similarity;
+  similarity.push_back(compare_names(r1->attributes[LASTNAME],
+                                     r2->attributes[LASTNAME]));
 
+  return similarity;
 }
 
 
