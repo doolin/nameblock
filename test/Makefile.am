@@ -7,7 +7,7 @@ LDADD = ../src/libblocking.a
 AM_LDFLAGS = $(shell cppunit-config --libs)
 
 
-TESTS = objects records comparators locations
+TESTS = objects records comparators locations similarities
 
 bin_PROGRAMS = $(TESTS)
 
@@ -26,6 +26,9 @@ comparators_LDADD = $(LDADD)
 
 locations_SOURCES = test_location.cpp testutils.cpp
 locations_LDADD = $(LDADD)
+
+similarities_SOURCES = test_similarity.cpp testutils.cpp
+similarity_LDADD = $(LDADD)
 
 
 

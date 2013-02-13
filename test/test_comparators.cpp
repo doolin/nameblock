@@ -102,7 +102,6 @@ public:
 
 
 void
-
 test_comparators() {
   ComparatorTest * ct = new ComparatorTest(std::string("Testing comparators"));
   ct->runTest();
