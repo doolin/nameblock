@@ -16,31 +16,40 @@ using std::ifstream;
 using std::string;
 using std::vector;
 
-typedef vector<uint8_t> SP;
+typedef vector<uint32_t> SP;
 
-SP
-compare_records_1(Record * r1, Record * r2) {
-  return SP({1,1});
-}
 
 class SimilarityTest : public CppUnit::TestCase {
+
+private:
+  Records records;
+  Blocks blocks;
 
 public:
 
   SimilarityTest(string name) : CppUnit::TestCase(name) {
 
     describe_test(INDENT0, name.c_str());
+
+    string filename("./fixtures/ten_records_1973.csv");
+    ifstream is(filename.c_str());
+    make_records_vector(is, records);
+
+    RecordPList rpl;
+    get_record_pointers(records, rpl);
+    create_blocks(rpl, blocks);
   }
+
 
   void test_similarity_equal() {
 
-
     Spec spec;
-    spec.it("Testing similarity for identical records", DO_SPEC {
-        Record * r1 = new Record("Foo, Bar");
-        Record * r2 = new Record("Foo, Bar");
+    spec.it("Testing similarity for identical records", DO_SPEC_THIS {
+        Record * r1 = &records[0];
+        Record * r2 = &records[0];
         SP sp({1,1});
-        return (sp == compare_records_1(r1, r2));
+        SP result = compare_records(r1, r2);
+        return (sp == result);
     });
   }
 
@@ -50,12 +59,13 @@ public:
 
 };
 
+
 void
 test_similarity() {
 
   SimilarityTest * st = new SimilarityTest(string("Similarity testing..."));
-  delete st;
   st->run_tests();
+  delete st;
 }
 
 
