@@ -43,11 +43,28 @@ public:
 
   void test_similarity_equal() {
 
+    describe_test(INDENT2, __PRETTY_FUNCTION__);
+
     Spec spec;
     spec.it("Testing similarity for identical records", DO_SPEC_THIS {
         Record * r1 = &records[0];
         Record * r2 = &records[0];
-        SP sp({1,1,1,1});
+        SP sp({1,1,1,1,1});
+        SP result = compare_records(r1, r2);
+        return (sp == result);
+    });
+  }
+
+  void test_similar_locations() {
+
+    describe_test(INDENT2, __PRETTY_FUNCTION__);
+
+    Spec spec;
+    spec.it("Testing similar locations", DO_SPEC_THIS {
+        Record * r1 = &records[3];
+        Record * r2 = &records[5];
+        // assignee and location the same
+        SP sp({0,0,1,1,1});
         SP result = compare_records(r1, r2);
         return (sp == result);
     });
@@ -55,6 +72,7 @@ public:
 
   void run_tests() {
     test_similarity_equal();
+    test_similar_locations();
   }
 
 };

@@ -251,7 +251,8 @@ count_blocks(const Blocks & blocks) {
 #define FIRSTNAME  0
 #define LASTNAME   1
 #define MIDDLENAME 22
-#define ASSIGNEE   15
+#define ASSIGNEE   14
+#define ASGNUM     15
 #define LOCATION   0
 #define CLASS      0
 #define COAUTHOR   0
@@ -269,8 +270,10 @@ compare_records(const Record * r1, const Record * r2) {
   similarity.push_back(compare_names(r1->attributes[MIDDLENAME],
                                      r2->attributes[MIDDLENAME]));
 
-  similarity.push_back(compare_names(r1->attributes[ASSIGNEE],
-                                     r2->attributes[ASSIGNEE]));
+  similarity.push_back(compare_assignees(r1->attributes[ASGNUM],
+                                         r2->attributes[ASGNUM]));
+
+  similarity.push_back(1); //locations, for now
 
   return similarity;
 }
