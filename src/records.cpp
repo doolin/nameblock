@@ -266,7 +266,12 @@ compare_records(const Record * r1, const Record * r2) {
   similarity.push_back(compare_names(r1->attributes[FIRSTNAME],
                                      r2->attributes[FIRSTNAME]));
 
-  //std::cout << "similarity: " << similarity[0] << std::endl;
+  similarity.push_back(compare_names(r1->attributes[MIDDLENAME],
+                                     r2->attributes[MIDDLENAME]));
+
+  similarity.push_back(compare_names(r1->attributes[ASSIGNEE],
+                                     r2->attributes[ASSIGNEE]));
+
   return similarity;
 }
 

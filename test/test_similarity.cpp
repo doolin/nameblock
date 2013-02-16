@@ -47,7 +47,7 @@ public:
     spec.it("Testing similarity for identical records", DO_SPEC_THIS {
         Record * r1 = &records[0];
         Record * r2 = &records[0];
-        SP sp({1,1});
+        SP sp({1,1,1,1});
         SP result = compare_records(r1, r2);
         return (sp == result);
     });
