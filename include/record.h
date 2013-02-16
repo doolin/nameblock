@@ -31,9 +31,11 @@ class Record {
 
     void print_attributes() const;
 
-    void print() {
-      // TODO: Change to print attributes
-      //std::cout << line << std::endl;
+    void print() const {
+      for (auto a : attributes) {
+        std::cout << a << " ";
+      }
+      std::cout << std::endl;
     }
 
   protected:
@@ -43,6 +45,7 @@ class Record {
   //string line;
 
 };
+
 
 typedef list<const Record*> RecordPList;
 typedef vector<Record> Records;
@@ -54,9 +57,11 @@ typedef Blocks::const_iterator c_blocks_iter_t;
 
 
 void make_records_vector(std::ifstream & is, Records & r);
+
 void get_record_pointers(const Records & r, RecordPList & rpl);
+
 void create_blocks(const RecordPList & rpl, Blocks & blocks);
 
-vector<uint32_t> compare_records(Record * r1, Record * r2);
+vector<uint32_t> compare_records(const Record * r1, const Record * r2);
 
 #endif // INVENTIUM_RECORD_H

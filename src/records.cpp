@@ -193,6 +193,7 @@ Record::parse_line(string & line) {
           field = line.substr(prev_pos );
       }
 
+      //std::cout << field << std::endl;
       attributes.push_back(field);
       prev_pos = pos + delim_size;
   }
@@ -224,6 +225,7 @@ make_records_vector(ifstream & is, Records & records) {
     if (line.empty()) {
       break;
     }
+    //std::cout << line << std::endl;
     Record r(line);
     records.push_back(r);
 
@@ -255,11 +257,14 @@ count_blocks(const Blocks & blocks) {
 #define COAUTHOR   0
 
 vector<uint32_t>
-compare_records(Record * r1, Record * r2) {
+compare_records(const Record * r1, const Record * r2) {
 
   vector<uint32_t> similarity;
   similarity.push_back(compare_names(r1->attributes[LASTNAME],
                                      r2->attributes[LASTNAME]));
+
+  similarity.push_back(compare_names(r1->attributes[FIRSTNAME],
+                                     r2->attributes[FIRSTNAME]));
 
   //std::cout << "similarity: " << similarity[0] << std::endl;
   return similarity;
