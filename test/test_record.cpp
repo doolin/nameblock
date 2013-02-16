@@ -106,6 +106,10 @@ public:
       return (string("att1") == r.attributes[0]);
     });
 
+    spec.it("parses 'att2' for the second attribute", DO_SPEC_HANDLE {
+      return (string(" att2") == r.attributes[1]);
+    });
+
   }
 
 
@@ -114,8 +118,8 @@ public:
     describe_test(INDENT2, __PRETTY_FUNCTION__);
 
     string line("att1, att2, att 3, 4 att");
-    Record r1(line);
-    Record r2(line);
+    const Record r1(line);
+    const Record r2(line);
 
     vector<uint32_t> simprof{1};
     //std::cout << "simprof: " << simprof[0] << std::endl;
@@ -123,10 +127,23 @@ public:
     spec.it("Records should be identical", DO_SPEC_HANDLE {
       return (simprof == compare_records(&r1, &r2));
     });
-
-
   }
 
+
+  void test_record_attributes() {
+
+    describe_test(INDENT2, __PRETTY_FUNCTION__);
+
+    records[7].print_attributes();
+    vector<string> atts = records[7].attributes;
+    Spec spec;
+    spec.it("first name should be MICHAEL A", DO_SPEC_HANDLE {
+      return (string("MICHAEL A") == atts[0]);
+    });
+    spec.it("last name should be NATE II", DO_SPEC_HANDLE {
+      return (string("NATE II") == atts[1]);
+    });
+  }
 
   void runTest() {
     test_parse_column_names();
@@ -135,6 +152,7 @@ public:
     test_block_mann_count_2();
     test_compare_records();
     test_parse_line();
+    test_record_attributes();
   }
 };
 
