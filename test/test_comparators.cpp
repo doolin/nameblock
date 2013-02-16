@@ -49,9 +49,11 @@ public:
     describe_test(INDENT2, __PRETTY_FUNCTION__);
 
     Spec spec;
-    spec.it("From location similarity test %d", DO_SPEC_HANDLE {
+    spec.xit("From location similarity test %d", DO_SPEC_HANDLE {
+        Record * r1 = &records[3];
+        Record * r2 = &records[5];
         sprintf(spec.buf, d, 1);
-        return (1 == compare_locations(string("foo"), string("foo")));
+        return (1 == compare_locations(r1->location, r2->location));
     });
   }
 

@@ -273,7 +273,10 @@ compare_records(const Record * r1, const Record * r2) {
   similarity.push_back(compare_assignees(r1->attributes[ASGNUM],
                                          r2->attributes[ASGNUM]));
 
-  similarity.push_back(1); //locations, for now
+  //similarity.push_back(1); //locations, for now
+
+  similarity.push_back(compare_locations(r1->location,
+                                         r2->location));
 
   return similarity;
 }

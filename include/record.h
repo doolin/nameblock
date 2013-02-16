@@ -13,18 +13,22 @@ using std::string;
 using std::vector;
 using std::list;
 
-// Comment for pushing the rebase
+#include <location.h>
+
 
 class Record {
 
   friend class RecordTest;
 
+
   public:
 
+    Location location;
     vector<string> attributes;
 
     explicit Record(string l) { //: line(l) {
       parse_line(l);
+      // set locations
     }
 
     void parse_line(string & l);

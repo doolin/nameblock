@@ -14,13 +14,17 @@ compare_names(string r1, string r2) {
 
 
 uint32_t
-compare_locations(string r1, string r2) {
+compare_locations(const Location l1, const Location l2) {
 
-  if (r1 == r2) {
+  return 1;
+
+  /*
+  if (l1 == l2) {
     return 1;
   } else {
     return 0;
   }
+  */
 }
 
 
