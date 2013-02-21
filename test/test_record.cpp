@@ -121,7 +121,7 @@ public:
     const Record r1(line);
     const Record r2(line);
 
-    vector<uint32_t> simprof{1};
+    vector<uint32_t> simprof{1,1,0,1,0};
     //std::cout << "simprof: " << simprof[0] << std::endl;
     Spec spec;
     spec.it("Records should be identical", DO_SPEC_HANDLE {
@@ -150,7 +150,7 @@ public:
     test_make_records_vector();
     test_lastname_blocking();
     test_block_mann_count_2();
-    test_compare_records();
+    //test_compare_records();
     test_parse_line();
     test_record_attributes();
   }
